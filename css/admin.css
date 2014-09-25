@@ -1,0 +1,16 @@
+.form label {
+	display: inline-block;
+  width: 150px;
+}
+.form textarea {
+	width: 470px;
+}
+h3 {
+	margin-top: 1.5em;
+}
+h4 {
+	margin-top: 1.5em;
+}
+h4 a {
+	font-size: .75em;
+}

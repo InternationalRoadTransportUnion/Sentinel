@@ -1,0 +1,31 @@
+<p><a href="/{{controller.app}}/admin/item/add">{"Add item"}</a></p>
+
+<table width="100%">
+	<tr>
+		<th>{"IP"}</th>
+		<th>{"Email"}</th>
+		<th>{"Username"}</th>
+		<th>{"Country"}</th>
+		<th>{"Action"}</th>
+		<th>{"Created"}</th>
+		<th>&nbsp;</th>
+	</tr>
+{% foreach items %}
+	<tr>
+		<td>{{ loop_value->ip }}</td>
+		<td>{{ loop_value->email }}</td>
+		<td>{{ loop_value->username }}</td>
+		<td>{{ loop_value->id2_country }}</td>
+		<td>{{ loop_value->action }}</td>
+		<td>{{ loop_value->created }}</td>
+		<td style="text-align: right">
+			<a href="/{{controller.app}}/admin/item/edit?id={{ loop_value->id }}">{"Edit"}</a> |
+			<a href="/{{controller.app}}/admin/item/delete"
+				data-id="{{ loop_value->id }}"
+				onclick="return $.confirm_and_post (this, '{"Are you sure you want to delete this item?"}')">{"Delete"}</a>
+		</td>
+	</tr>
+{% end %}
+</table>
+
+{! navigation/pager?style=text&url=[url]&total=[total]&count=[count]&limit=[limit] !}

@@ -1,0 +1,23 @@
+{
+	"name": "elefant/app-sentinel",
+	"type": "elefant-app",
+	"description": "Sentinel application for the Elefant CMS",
+	"keywords": ["security", "antispam", "protection"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Oleg Ivanchenko",
+			"email": "oleg.ivanchenko@iru.org",
+			"homepage": "https://digest.info/sentinel"
+		}
+	],
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/InternationalRoadTransportUnion/Sentinel.git"
+		}
+	],
+	"require": {
+		"elefant/app-installer": "*"
+	}
+}

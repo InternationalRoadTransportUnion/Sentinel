@@ -1,0 +1,16 @@
+{
+	"type": "app",
+	"folder": "sentinel",
+	"name": "Sentinel",
+	"version": "0.1.1",
+	"website": "https://it-digest.info/sentinel",
+	"repository": "https://github.com/InternationalRoadTransportUnion/Sentinel.git",
+	"author": {
+		"name": "Oleg Ivanchenko",
+		"email": "oleg.ivanchenko@iru.org"
+	},
+	"requires": {
+		"php": "5.3.2",
+		"elefant": "1.2.0"
+	}
+}

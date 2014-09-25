@@ -1,0 +1,51 @@
+<div class="form">
+	
+	<form method="post" id="{{_form}}">
+
+		<p><label for="action">{"Action"}</label>
+			<select name="action" id="action">
+				<option value="1" selected>{"Block"}</option>
+				<option value="2">{"Whitelist"}</option>
+			</select>
+			<span class="notice" id="action-notice">{"Please select an action"}</span>
+		</p>
+		
+		<p>
+			<label for="ip">{"IP"}</label>
+			<input type="text" name="ip" id="ip" value="{{ ip }}" />
+		</p>
+		
+		<p>
+			<label for="email">{"Email"}</label>
+			<input type="text" name="email" id="email" value="{{ email|quotes }}" />
+			<span class="notice" id="email-notice">{"Please enter valid email address"}</span>
+		</p>		
+		
+		<p>
+			<label for="username">{"Username"}</label>
+			<input type="text" name="username" id="username" value="{{ username }}" />
+		</p>
+		
+		<p>
+			<label for="id2_country">{"Id2_country"}</label>
+			<select name="id2_country" id="id2_country" value="{{ id2_country|quotes }}">
+				<option value=""></option>
+				{% foreach Country::get_list () %}
+					<option value="{{ loop_index }}">{{ loop_value }}</option>
+				{% end %}
+			</select>
+		</p>
+
+		<p>
+			<label for="notes">{"Notes"}</label>
+			<textarea name="notes" id="notes">{{ notes|quotes }}</textarea>
+		</p>
+
+		<p>
+			<input type="submit" value='{"Add"}' />
+			<a href="/{{controller.app}}/admin/item/browse" onclick="return confirm ('{"Are you sure you want to cancel?"}')">{"Cancel"}</a>
+		</p>
+
+	</form>
+	
+</div>

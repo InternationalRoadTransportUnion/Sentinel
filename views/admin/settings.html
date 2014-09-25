@@ -1,0 +1,144 @@
+<div class="form">
+
+	<form method="post" id="{{_form}}">
+		
+		<h3>{"Global settings"}</h3>
+
+		<div><label for='is_active'>{"Active"}:</label>
+			<input type="checkbox" name="is_active" id='is_active' value="yes"{% if is_active %} checked{% end %} />
+		</div>
+		<div>
+			<label for="proxy_url">{"Proxy URL"}</label>
+			<input type="text" name="proxy_url" id="proxy_url" value="{{proxy_url}}" />
+		</div>
+		<div>
+			<label for="proxy_port">{"Proxy port"}</label>
+			<input type="text" name="proxy_port" id="proxy_port" value="{{proxy_port}}" />
+		</div>
+		<div>
+			<label for="ips_allowed">{"IPs allowed to use the service"} ({"comma separated"})</label>
+			<textarea name="ips_allowed" id="ips_allowed">{{ips_allowed}}</textarea>
+		</div>
+		<div>
+			<label for="api_keys">{"API keys"} ({"comma separated"})</label>
+			<textarea name="api_keys" id="api_keys">{{api_keys}}</textarea>
+		</div>
+		
+		<h3>Checkers</h3>
+		
+		<h4>{"Local"}</h4>
+		<div><label for='is_active_local'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_local" id='is_active_local' value="yes"{% if is_active_local %} checked{% end %} />
+		</div>
+
+		<h4>abuse.ch (Drone) - DNSBL <a href="http://www.dnsbl.info/" target="_blank">http://www.dnsbl.info/</a></h4>
+		<div><label for='is_active_abusechdrone'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_abusechdrone" id='is_active_abusechdrone' value="yes"{% if is_active_abusechdrone %} checked{% end %} />
+		</div>
+		
+		<h4>abuse.ch (HTTPBL) - DNSBL <a href="http://www.dnsbl.info/" target="_blank">http://www.dnsbl.info/</a></h4>
+		<div><label for='is_active_abusechhttpbl'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_abusechhttpbl" id='is_active_abusechhttpbl' value="yes"{% if is_active_abusechhttpbl %} checked{% end %} />
+		</div>
+
+		<h4>abuse.ch (Spam) - DNSBL <a href="http://www.dnsbl.info/" target="_blank">http://www.dnsbl.info/</a></h4>
+		<div><label for='is_active_abusechspam'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_abusechspam" id='is_active_abusechspam' value="yes"{% if is_active_abusechspam %} checked{% end %} />
+		</div>
+		
+		<h4>abuse.ch (Zeustracker) - DNSBL <a href="http://www.dnsbl.info/" target="_blank">http://www.dnsbl.info/</a></h4>
+		<div><label for='is_active_abusechzeustracker'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_abusechzeustracker" id='is_active_abusechzeustracker' value="yes"{% if is_active_abusechzeustracker %} checked{% end %} />
+		</div>
+		
+		<h4>Abusive Hosts Blocking List <a href="http://ahbl.org/" target="_blank">http://ahbl.org/</a></h4>
+		<div><label for='is_active_ahbl'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_ahbl" id='is_active_ahbl' value="yes"{% if is_active_ahbl %} checked{% end %} />
+		</div>
+		
+		<h4>Blocklist.de <a href="http://www.blocklist.de/" target="_blank">http://www.blocklist.de/</a></h4>
+		<div><label for='is_active_blocklistde'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_blocklistde" id='is_active_blocklistde' value="yes"{% if is_active_blocklistde %} checked{% end %} />
+		</div>
+		
+		<h4>BotScout <a href="http://botscout.com/" target="_blank">http://botscout.com/</a></h4>
+		<div><label for='is_active_botscout'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_botscout" id='is_active_botscout' value="yes"{% if is_active_botscout %} checked{% end %} />
+		</div>
+		<div>
+			<label for="apikey_botscout">{"API key"}</label>
+			<input type="text" name="apikey_botscout" id="apikey_botscout" value="{{apikey_botscout}}" /><br />
+			<em>{"This key is required if you wish to query botscout.com (they allow limited queries without it)"}</em>
+		</div>
+		
+		<h4>Drone BL <a href="http://dronebl.org/" target="_blank">http://dronebl.org/</a></h4>
+		<div><label for='is_active_dronebl'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_dronebl" id='is_active_dronebl' value="yes"{% if is_active_dronebl %} checked{% end %} />
+		</div>
+
+		<h4>EFnet RBL <a href="http://efnetrbl.org/" target="_blank">http://efnetrbl.org/</a></h4>
+		<div><label for='is_active_efnetrbl'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_efnetrbl" id='is_active_efnetrbl' value="yes"{% if is_active_efnetrbl %} checked{% end %} />
+		</div>
+				
+		<h4>FSpamlist <a href="http://fspamlist.com/" target="_blank">http://fspamlist.com/</a></h4>
+		<div><label for='is_active_fspamlist'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_fspamlist" id='is_active_fspamlist' value="yes"{% if is_active_fspamlist %} checked{% end %} />
+		</div>
+		<div>
+			<label for="apikey_fspamlist">{"API key"}</label>
+			<input type="text" name="apikey_fspamlist" id="apikey_fspamlist" value="{{apikey_fspamlist}}" /><br />
+			<em>{"This key is optional"}</em>
+		</div>
+	
+		<h4>ProjectHoneyPot <a href="http://www.projecthoneypot.org/" target="_blank">http://www.projecthoneypot.org/</a></h4>
+		<div><label for='is_active_projecthoneypot'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_projecthoneypot" id='is_active_projecthoneypot' value="yes"{% if is_active_projecthoneypot %} checked{% end %} />
+		</div>
+		<div>
+			<label for="apikey_projecthoneypot">{"API key"}</label>
+			<input type="text" name="apikey_projecthoneypot" id="apikey_projecthoneypot" value="{{apikey_projecthoneypot}}" /><br />
+			<em>{"This key is required if you wish to query Projecthoneypot.org"}</em>
+		</div>
+		
+		<h4>Sorbs (problems) <a href="http://dnsbl.sorbs.net/" target="_blank">http://dnsbl.sorbs.net/</a></h4>
+		<div><label for='is_active_sorbsproblems'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_sorbsproblems" id='is_active_sorbsproblems' value="yes"{% if is_active_sorbsproblems %} checked{% end %} />
+		</div>
+
+		<h4>Sorbs (spew) <a href="http://dnsbl.sorbs.net/" target="_blank">http://dnsbl.sorbs.net/</a></h4>
+		<div><label for='is_active_sorbsspews'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_sorbsspews" id='is_active_sorbsspews' value="yes"{% if is_active_sorbsspews %} checked{% end %} />
+		</div>
+		
+		<h4>SpamCop <a href="http://www.spamcop.net/" target="_blank">http://www.spamcop.net/</a></h4>
+		<div><label for='is_active_spamcop'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_spamcop" id='is_active_spamcop' value="yes"{% if is_active_spamcop %} checked{% end %} />
+		</div>
+
+		<h4>Spamhaus <a href="http://www.spamhaus.org/" target="_blank">http://www.spamhaus.org/</a></h4>
+		<div><label for='is_active_spamhaus'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_spamhaus" id='is_active_spamhaus' value="yes"{% if is_active_spamhaus %} checked{% end %} />
+		</div>
+				
+		<h4>Stop Forum Spam <a href="http://www.stopforumspam.com/" target="_blank">http://www.stopforumspam.com/</a></h4>
+		<div><label for='is_active_stopforumspam'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_stopforumspam" id='is_active_stopforumspam' value="yes"{% if is_active_stopforumspam %} checked{% end %} />
+		</div>
+		
+		<h4>Tornevall <a href="https://dnsbl.tornevall.org/" target="_blank">https://dnsbl.tornevall.org/</a></h4>
+		<div><label for='is_active_tornevall'>{"Active"}:</label>
+			<input type="checkbox" name="is_active_tornevall" id='is_active_tornevall' value="yes"{% if is_active_tornevall %} checked{% end %} />
+		</div>
+		
+		<h4></h4>
+		
+		<p>
+			<input type="submit" value='{"Save Settings"}' />
+			&nbsp;
+			<a href="/{{controller.app}}/admin" onclick="return confirm ('{"Are you sure you want to cancel and loose any changes?"}')">{"Cancel"}</a>
+		</p>
+		
+	</form>
+	
+</div>

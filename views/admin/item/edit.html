@@ -1,0 +1,53 @@
+<div class="form">
+	
+	<form method="post" id="{{_form}}">
+		
+		<p><label for="action">{"Action"}</label>
+			<select name="action" id="action">
+				<option value="1"{% if action === 1 %} selected{% end %}>{"Block"}</option>
+				<option value="2"{% if action === 2 %} selected{% end %}>{"Whitelist"}</option>
+			</select>
+			<span class="notice" id="action-notice">{"Please select an action"}</span>
+		</p>
+		
+		<p>
+			<label for="ip">{"IP"}</label>
+			<input type="text" name="ip" id="ip" value="{{ ip }}" />
+		</p>
+		
+		<p>
+			<label for="email">{"Email"}</label>
+			<input type="text" name="email" id="email" value="{{ email|quotes }}" />
+			<span class="notice" id="email-notice">{"Please enter valid email address"}</span>
+		</p>
+		
+		<p>
+			<label for="username">{"Username"}</label>
+			<input type="text" name="username" id="username" value="{{ username|quotes }}" />
+		</p>
+
+		<p>
+			<label for="id2_country">{"Country"}</label>
+			<select name="id2_country" id="id2_country" value="{{ id2_country|quotes }}">
+				<option value=""{% if ! id2_country %} selected{% end %}></option>
+				{% foreach Country::get_list () %}
+					<option value="{{ loop_index }}"{% if id2_country === $data->loop_index %} selected{% end %}>{{ loop_value }}</option>
+				{% end %}
+			</select>
+		</p>
+
+		<p>
+			<label for="notes">{"Notes"}</label>
+			<textarea name="notes" id="notes">{{ notes|quotes }}</textarea>
+		</p>
+		
+		<p>
+			<input type="submit" value='{"Save"}' />
+			<a href="/{{controller.app}}/admin/item/browse" onclick="return confirm ('{"Are you sure you want to cancel?"}')">{"Cancel"}</a>
+		</p>
+		
+		<input type="hidden" name="created" value="{{ created }}" />
+
+	</form>
+	
+</div>
