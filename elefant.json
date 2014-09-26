@@ -2,7 +2,7 @@
 	"type": "app",
 	"folder": "sentinel",
 	"name": "Sentinel",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"website": "https://it-digest.info/sentinel",
 	"repository": "https://github.com/InternationalRoadTransportUnion/Sentinel.git",
 	"author": {
