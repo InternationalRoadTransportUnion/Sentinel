@@ -205,7 +205,7 @@ abstract class Sentinel {
 			curl_close ($curl);
 		}	else {
 			// TODO: Add proxy if needed.
-			$return = @file_get_contents ($sURL);
+			$return = @file_get_contents ($url);
 		}
 		return $return;
 	}
