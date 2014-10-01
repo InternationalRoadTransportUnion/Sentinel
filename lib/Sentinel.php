@@ -11,7 +11,7 @@ require_once 'Checkers.php';
  * @package Sentinel
  * @access public
  * @since 05.01.2014
- * @version 0.0.5 25.09.2014
+ * @version 0.0.6 01.10.2014
  * @author Oleg Ivanchenko <oleg.ivanchenko@iru.org>
  * @copyright Copyright (C) 2014, IRU
  */
@@ -181,7 +181,7 @@ abstract class Sentinel {
 	
 	/**
 	 * Gets a URL's content
-	 * If file_get_contents() is available, use that, otherwise use cURL
+	 * If curl is available, use it, otherwise use file_get_contents ()
 	 *
 	 * @param type $url
 	 * @return string
@@ -191,8 +191,12 @@ abstract class Sentinel {
 		if (extension_loaded ('curl')) {
 			$curl = @curl_init ();
 			curl_setopt ($curl, CURLOPT_URL, $url);
-			if (($proxy = \Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_url') . ':' . \Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_port'))) {
-				curl_setopt ($curl, CURLOPT_PROXY, $proxy);
+			if (\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_url') &&
+					\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_port')) {
+				curl_setopt ($curl, CURLOPT_PROXY,
+					\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_url') . ':' .
+					\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_port')
+				);
 			}
 			curl_setopt ($curl, CURLOPT_VERBOSE, 0);
 			curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -200,7 +204,8 @@ abstract class Sentinel {
 			$return = @curl_exec ($curl);
 			curl_close ($curl);
 		}	else {
-			$return = @file_get_contents($sURL);
+			// TODO: Add proxy if needed.
+			$return = @file_get_contents ($sURL);
 		}
 		return $return;
 	}
