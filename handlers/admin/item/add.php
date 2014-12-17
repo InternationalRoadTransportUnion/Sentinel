@@ -8,8 +8,6 @@ $page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' . __ ('Add ite
 
 $form = new Form ('post', $this);
 
-$form->verify = 'apps/' . $this->app . '/forms/admin/item/add.php';
-
 echo $form->handle (function ($form) {
 
 	$item = new Item (array (

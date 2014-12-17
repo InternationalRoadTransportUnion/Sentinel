@@ -37,8 +37,6 @@ $form->data = array (
 	'is_active_tornevall' => $appconf['Tornevall']['is_active']
 );
 
-$form->verify = 'apps/' . $this->app . '/admin/forms/settings.php';
-
 echo $form->handle (function ($form) {
 	
 	$merged = Appconf::merge ($this->app, array (

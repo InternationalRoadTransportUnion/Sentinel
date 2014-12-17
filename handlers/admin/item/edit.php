@@ -15,8 +15,6 @@ if (! ($id = filter_input (INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT))) {
 
 $form->data = new Item ($id);
 
-$form->verify = 'apps/' . $this->app . '/forms/admin/item/edit.php';
-
 echo $form->handle (function ($form) {
 	
 	$item = $form->data;
