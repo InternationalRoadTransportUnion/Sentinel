@@ -11,6 +11,11 @@ Optional parameters:
 
 &format=[json|text]&apikey=[apikey]&debug=1
 
+Check IPs HTML form:
+====================
+
+[site url]/sentinel/check/ip
+
 The following checkers are used:
 ================================
 

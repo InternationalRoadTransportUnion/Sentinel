@@ -3,7 +3,7 @@
 [Admin]
 
 name = Sentinel
-version = 0.1.2
+version = 0.2.0
 handler = sentinel/admin
 install = sentinel/admin/maintenance/install
 upgrade = sentinel/admin/maintenance/upgrade

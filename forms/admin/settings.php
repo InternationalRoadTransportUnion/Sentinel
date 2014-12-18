@@ -12,6 +12,9 @@ skip_if_empty = 1
 [api_keys]
 skip_if_empty = 1
 
+[api_key_local]
+not empty = 1
+
 [is_active_abusechdrone]
 skip_if_empty = 1
 

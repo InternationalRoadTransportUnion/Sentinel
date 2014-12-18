@@ -1,0 +1,39 @@
+<style type="text/css">
+	.notice {
+		color: #1C75BC;
+		display: none;
+	}
+</style>
+
+<form method="post" id="{{ _form }}">
+	<div>
+		<label for="ips">{"IP addresses (each one on a new line"})</label><br />
+		<textarea name="ips" id="ips" cols="15" rows="5">{{ ips }}</textarea>
+		<span class="notice" id="ips-notice">{"Please enter IP address(es)"}</span>
+	</div>
+	<div>
+		<input type="submit" value='{"Check"}' />
+		&nbsp;
+		<input type="reset" value='{"Cancel"}' onclick="window.location='/sentinel/check/ip'" />
+	</div>		
+</form>
+
+{% if results %}
+	<hr />
+	<h4>{"Checked IPs"}</h4>
+	{% foreach results as ip, result %}
+		<div>
+			{% if result['error_message'] %}
+				{{ result['ip'] }}: <span style="color:blue;">{"Error"}: {{ result['error_message'] }}</span>
+			{% else %}
+				<a href="/sentinel/validate?ip={{ result['ip'] }}&format=json&apikey={{ api_key_local }}&debug=1" target="_blank"
+					 title="{"Click for more details"}">{{ result['ip'] }}</a>:
+				{% if result['score']>0 %}
+					<span style="color:red;">{"SPAMMER"}</span> {"delected by"}: {{ result['pots'] }} {"with score"}: {{ result['score'] }}
+				{% else %}
+					<span style="color:green;">OK</span>
+				{% end %}
+			{% end %}
+		</div>
+	{% end %}
+{% end %}

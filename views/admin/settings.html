@@ -2,6 +2,14 @@
 
 	<form method="post" id="{{_form}}">
 		
+		<div>
+			<input type="submit" value='{"Save Settings"}' />
+			&nbsp;
+			<a href="/{{controller.app}}/admin" onclick="return confirm ('{"Are you sure you want to cancel and loose any changes?"}')">{"Cancel"}</a>
+		</div>
+		
+		<h4></h4>
+		
 		<h3>{"Global settings"}</h3>
 
 		<div><label for='is_active'>{"Active"}:</label>
@@ -22,6 +30,11 @@
 		<div>
 			<label for="api_keys">{"API keys"} ({"comma separated"})</label>
 			<textarea name="api_keys" id="api_keys">{{api_keys}}</textarea>
+		</div>
+		<div>
+			<label for="api_key_local">{"Local API key"}</label>
+			<input type="text" name="api_key_local" id="api_key_local" value="{{api_key_local}}" />
+			<span class="notice" id="api_key_local-notice">{"Please enter local API key"}</span>
 		</div>
 		
 		<h3>Checkers</h3>
@@ -133,11 +146,11 @@
 		
 		<h4></h4>
 		
-		<p>
+		<div>
 			<input type="submit" value='{"Save Settings"}' />
 			&nbsp;
 			<a href="/{{controller.app}}/admin" onclick="return confirm ('{"Are you sure you want to cancel and loose any changes?"}')">{"Cancel"}</a>
-		</p>
+		</div>
 		
 	</form>
 	

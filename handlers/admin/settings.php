@@ -14,6 +14,7 @@ $form->data = array (
 	'proxy_port' => $appconf['Global']['proxy_port'],
 	'ips_allowed' => $appconf['Global']['ips_allowed'],
 	'api_keys' => $appconf['Global']['api_keys'],
+	'api_key_local' => $appconf['Global']['api_key_local'],
 	'is_active_local' => $appconf['Local']['is_active'],
 	'is_active_abusechdrone' => $appconf['AbuseChDrone']['is_active'],
 	'is_active_abusechhttpbl' => $appconf['AbuseChHttpbl']['is_active'],
@@ -45,7 +46,8 @@ echo $form->handle (function ($form) {
 			'proxy_url' => filter_input (INPUT_POST, 'proxy_url', FILTER_SANITIZE_STRING),
 			'proxy_port' => filter_input (INPUT_POST, 'proxy_port', FILTER_SANITIZE_STRING),
 			'ips_allowed' => filter_input (INPUT_POST, 'ips_allowed', FILTER_SANITIZE_STRING),
-			'api_keys' => filter_input (INPUT_POST, 'api_keys', FILTER_SANITIZE_STRING)
+			'api_keys' => filter_input (INPUT_POST, 'api_keys', FILTER_SANITIZE_STRING),
+			'api_key_local' => filter_input (INPUT_POST, 'api_key_local', FILTER_SANITIZE_STRING)
 		),
 		'Local' => array (
 			'is_active' => (filter_input (INPUT_POST, 'is_active_local', FILTER_SANITIZE_STRING) === 'yes') ? true : false

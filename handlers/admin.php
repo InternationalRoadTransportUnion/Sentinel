@@ -12,5 +12,8 @@ $page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' . __ ('Control
 
 echo $tpl->render (
 	$this->app . '/admin',
-	array ('version' => Appconf::get ($this->app, 'Admin', 'version'))
+	array (
+		'version' => Appconf::get ($this->app, 'Admin', 'version'),
+		'api_key_local' => $appconf['Global']['api_key_local']
+	)
 );
