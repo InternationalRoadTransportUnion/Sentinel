@@ -4,7 +4,7 @@ $this->require_admin ();
 
 $page->layout = 'admin';
 $page->add_style ('/apps/' . $this->app . '/css/admin.css');
-$page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' .  __ ('Browse items');
+$page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' .  __ ('Browse blocked items');
 
 $limit = 20;
 $num = isset ($this->params[0]) ? $this->params[0] : 1;

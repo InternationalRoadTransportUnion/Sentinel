@@ -1,4 +1,4 @@
-<p><a href="/{{controller.app}}/admin/item/add">{"Add item"}</a></p>
+<p><a href="/{{controller.app}}/admin/item/add">{"Add blocked item"}</a></p>
 
 <table width="100%">
 	<tr>
@@ -22,7 +22,7 @@
 			<a href="/{{controller.app}}/admin/item/edit?id={{ loop_value->id }}">{"Edit"}</a> |
 			<a href="/{{controller.app}}/admin/item/delete"
 				data-id="{{ loop_value->id }}"
-				onclick="return $.confirm_and_post (this, '{"Are you sure you want to delete this item?"}')">{"Delete"}</a>
+				onclick="return $.confirm_and_post (this, '{"Are you sure you want to delete this blocked item?"}')">{"Delete"}</a>
 		</td>
 	</tr>
 {% end %}

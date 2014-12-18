@@ -4,7 +4,7 @@ $this->require_admin ();
 
 $page->layout = 'admin';
 $page->add_style ('/apps/' . $this->app . '/css/admin.css');
-$page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' . __ ('Add item');
+$page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' . __ ('Add blocked item');
 
 $form = new Form ('post', $this);
 
@@ -22,13 +22,13 @@ echo $form->handle (function ($form) {
 	$item->put ();
 
 	if ($item->error) {
-		$form->controller->add_notification (__ ('Unable to save item, error') . '; ' . $item->error);
+		$form->controller->add_notification (__ ('Unable to save blocked item, error') . '; ' . $item->error);
 		return false;
 	}
 
 	Versions::add ($item);
 
-	$form->controller->add_notification ( __ ('Item added'));
+	$form->controller->add_notification ( __ ('Blocked item added'));
 	$form->controller->redirect ('/' . $this->app . '/admin/item/browse');
 	
 });

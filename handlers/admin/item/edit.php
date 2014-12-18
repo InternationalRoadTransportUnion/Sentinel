@@ -4,7 +4,7 @@ $this->require_admin ();
 
 $page->layout = 'admin';
 $page->add_style ('/apps/' . $this->app . '/css/admin.css');
-$page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' . __ ('Edit item');
+$page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' . __ ('Edit blocked item');
 
 $form = new Form ('post', $this);
 
