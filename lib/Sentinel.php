@@ -134,7 +134,8 @@ abstract class Sentinel {
 	private function is_allowed_apikey ($api_key) {
 		
 		if ($api_key) {
-			$return = in_array ($api_key, explode (',', \Appconf::get ($GLOBALS['controller']->app, 'Global', 'api_keys')));
+			$return = in_array ($api_key, explode (',', \Appconf::get ($GLOBALS['controller']->app, 'Global', 'api_keys'))) ||
+								(\Appconf::get ($GLOBALS['controller']->app, 'Global', 'api_key_local') == $api_key);
 		} else {
 			$return = true;
 		}
