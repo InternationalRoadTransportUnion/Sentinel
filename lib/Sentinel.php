@@ -11,9 +11,9 @@ require_once 'Checkers.php';
  * @package Sentinel
  * @access public
  * @since 05.01.2014
- * @version 0.0.6 01.10.2014
+ * @version 0.0.7 10.02.2015
  * @author Oleg Ivanchenko <oleg.ivanchenko@iru.org>
- * @copyright Copyright (C) 2014, IRU
+ * @copyright Copyright (C) 2014 - 2015, IRU
  */
 abstract class Sentinel {
 	
@@ -191,13 +191,7 @@ abstract class Sentinel {
 		if (extension_loaded ('curl')) {
 			$curl = @curl_init ();
 			curl_setopt ($curl, CURLOPT_URL, $url);
-			if (\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_url') &&
-					\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_port')) {
-				curl_setopt ($curl, CURLOPT_PROXY,
-					\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_url') . ':' .
-					\Appconf::get ($GLOBALS['controller']->app, 'Global', 'proxy_port')
-				);
-			}
+			curl_setproxy ($curl, $url);
 			curl_setopt ($curl, CURLOPT_VERBOSE, 0);
 			curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt ($curl, CURLOPT_HEADER, 0);

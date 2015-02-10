@@ -16,14 +16,6 @@
 			<input type="checkbox" name="is_active" id='is_active' value="yes"{% if is_active %} checked{% end %} />
 		</div>
 		<div>
-			<label for="proxy_url">{"Proxy URL"}</label>
-			<input type="text" name="proxy_url" id="proxy_url" value="{{proxy_url}}" />
-		</div>
-		<div>
-			<label for="proxy_port">{"Proxy port"}</label>
-			<input type="text" name="proxy_port" id="proxy_port" value="{{proxy_port}}" />
-		</div>
-		<div>
 			<label for="ips_allowed">{"IPs allowed to use the service"} ({"comma separated"})</label>
 			<textarea name="ips_allowed" id="ips_allowed">{{ips_allowed}}</textarea>
 		</div>

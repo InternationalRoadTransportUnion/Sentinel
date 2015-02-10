@@ -10,8 +10,6 @@ $form = new Form ('post', $this);
 
 $form->data = array (
 	'is_active' => $appconf['Global']['is_active'],
-	'proxy_url' => $appconf['Global']['proxy_url'],
-	'proxy_port' => $appconf['Global']['proxy_port'],
 	'ips_allowed' => $appconf['Global']['ips_allowed'],
 	'api_keys' => $appconf['Global']['api_keys'],
 	'api_key_local' => $appconf['Global']['api_key_local'],
@@ -43,8 +41,6 @@ echo $form->handle (function ($form) {
 	$merged = Appconf::merge ($this->app, array (
 		'Global' => array (
 			'is_active' => (filter_input (INPUT_POST, 'is_active', FILTER_SANITIZE_STRING) === 'yes') ? true : false,
-			'proxy_url' => filter_input (INPUT_POST, 'proxy_url', FILTER_SANITIZE_STRING),
-			'proxy_port' => filter_input (INPUT_POST, 'proxy_port', FILTER_SANITIZE_STRING),
 			'ips_allowed' => filter_input (INPUT_POST, 'ips_allowed', FILTER_SANITIZE_STRING),
 			'api_keys' => filter_input (INPUT_POST, 'api_keys', FILTER_SANITIZE_STRING),
 			'api_key_local' => filter_input (INPUT_POST, 'api_key_local', FILTER_SANITIZE_STRING)

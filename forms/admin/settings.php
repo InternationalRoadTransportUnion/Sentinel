@@ -3,9 +3,6 @@
 [is_active_app]
 skip_if_empty = 1
 
-[proxy_url]
-skip_if_empty = 1
-
 [ips_allowed]
 skip_if_empty = 1
 
