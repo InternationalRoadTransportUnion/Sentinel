@@ -1,5 +1,8 @@
 <?php
 
+use sentinel\Sentinel;
+use sentinel\Error;
+
 $page->title = Appconf::get ($this->app, 'Admin', 'name') . ' - ' . __ ('Check IPs');
 
 $form = new Form ('post', $this);
@@ -9,7 +12,7 @@ echo $form->handle (function ($form) use ($appconf, $tpl) {
 	$results = array ();
 	if (($ips_cgi = filter_input (INPUT_POST, 'ips', FILTER_SANITIZE_STRING))) {
 		if (($ips = explode ("\r", $ips_cgi))) {
-			$sentinel = new SentinelService ();			
+			$sentinel = new Sentinel;			
 			foreach ($ips as $ip) {
 				$ip = trim ($ip);
 				if (! filter_var ($ip, FILTER_VALIDATE_IP)) {
@@ -20,7 +23,7 @@ echo $form->handle (function ($form) use ($appconf, $tpl) {
 				} else {
 					$validation_result = $sentinel->validate ($ip);
 					$pots = array ();
-					if (($error = Sentinel\Error::get_error_message ())) {
+					if (($error = Error::get_error_message ())) {
 						$results[] = array (
 							'ip' => $ip,
 							'error_message' => $error

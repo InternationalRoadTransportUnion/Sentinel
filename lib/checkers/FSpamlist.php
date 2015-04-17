@@ -1,6 +1,6 @@
 <?php
 
-namespace Sentinel;
+namespace sentinel;
 
 /**
  * Botscout Checker class.
@@ -8,9 +8,9 @@ namespace Sentinel;
  * @package Sentinel
  * @access public
  * @since 23.09.2014
- * @version 0.0.1 24.09.2014
+ * @version 0.1.0 17.04.2015
  * @author Oleg Ivanchenko <oleg.ivanchenko@iru.org>
- * @copyright Copyright (C) 2014, IRU
+ * @copyright Copyright (C) 2014 - 2015, IRU
  */
 class FSpamlist extends Checker {
 	
@@ -41,7 +41,7 @@ class FSpamlist extends Checker {
 			$spammer_data .= $username;
 		}
 		if ($spammer_data) {
-			$result = \Sentinel\Sentinel::get_url (
+			$result = Sentinel::get_url (
 				str_replace (
 					array ('{{apikey}}', '{{spammer_data}}'),
 					array ($this->config['apikey'], trim ($spammer_data, ',')),

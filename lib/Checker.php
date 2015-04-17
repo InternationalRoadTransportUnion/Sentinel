@@ -1,9 +1,6 @@
 <?php
 
-namespace Sentinel;
-
-require_once 'checkers/prototypes/Lookup.php';
-require_once 'checkers/prototypes/Sorbs.php';
+namespace sentinel;
 
 /**
  * Checker abstract class.
@@ -11,9 +8,9 @@ require_once 'checkers/prototypes/Sorbs.php';
  * @package Sentinel
  * @access public
  * @since 05.01.2014
- * @version 0.0.4 25.09.2014
+ * @version 0.1.0 17.04.2015
  * @author Oleg Ivanchenko <oleg.ivanchenko@iru.org>
- * @copyright Copyright (C) 2014, IRU
+ * @copyright Copyright (C) 2014 - 2015, IRU
  */
 abstract class Checker {
 	

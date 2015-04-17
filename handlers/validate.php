@@ -1,19 +1,22 @@
 <?php
 
-$sentinel = new SentinelService ();
+use sentinel\Sentinel;
+use sentinel\Error;
 
-if (! $sentinel->can_run (substr (filter_input (INPUT_GET, 'apikey', FILTER_SANITIZE_STRING), 0, SentinelService::APIKEY_LENGTH))) {
+$sentinel = new Sentinel;
+
+if (! $sentinel->can_run (substr (filter_input (INPUT_GET, 'apikey', FILTER_SANITIZE_STRING), 0, Sentinel::APIKEY_LENGTH))) {
 
 	$result = array (
 		'score' => -1,
-		'error' => Sentinel\Error::get_error_message ()
+		'error' => Error::get_error_message ()
 	);
 	
 } else {
 
 	$ip = substr (filter_input (INPUT_GET, 'ip', FILTER_SANITIZE_STRING), 0, 15);
 	$email = filter_input (INPUT_GET, 'email', FILTER_SANITIZE_EMAIL);
-	$username = substr (filter_input (INPUT_GET, 'username', FILTER_SANITIZE_STRING), 0, SentinelService::USERNAME_LENGTH);
+	$username = substr (filter_input (INPUT_GET, 'username', FILTER_SANITIZE_STRING), 0, Sentinel::USERNAME_LENGTH);
 	
 	if (! filter_var ($ip, FILTER_VALIDATE_IP)) {
 		$ip = '';
@@ -24,7 +27,7 @@ if (! $sentinel->can_run (substr (filter_input (INPUT_GET, 'apikey', FILTER_SANI
 	
 	if ($ip || $email || $username) {		
 		$result = $sentinel->validate ($ip);
-		if (($error = Sentinel\Error::get_error_message ())) {
+		if (($error = Error::get_error_message ())) {
 			$result = array (
 				'score' => -1,
 				'error' => $error
@@ -39,14 +42,14 @@ if (! $sentinel->can_run (substr (filter_input (INPUT_GET, 'apikey', FILTER_SANI
 }
 
 switch (strtolower (filter_input (INPUT_GET, 'format', FILTER_SANITIZE_STRING))) {
-	case SentinelService::FORMAT_JSON:
+	case Sentinel::FORMAT_JSON:
 		$header = "Content-type: application/json";
 		$output = json_encode ($result);
 		if (filter_input (INPUT_GET, 'debug', FILTER_SANITIZE_NUMBER_INT)) {
-			$output = SentinelService::pretty_json ($output);
+			$output = Sentinel::pretty_json ($output);
 		}
 		break;
-	case SentinelService::FORMAT_TEXT:
+	case Sentinel::FORMAT_TEXT:
 	case '':
 	default:
 		$header = 'Content-type: text/plain';

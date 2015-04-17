@@ -1,9 +1,6 @@
 <?php
 
-namespace Sentinel;
-
-require_once 'Error.php';
-require_once 'Checkers.php';
+namespace sentinel;
 
 /**
  * Sentinel base class.
@@ -11,11 +8,11 @@ require_once 'Checkers.php';
  * @package Sentinel
  * @access public
  * @since 05.01.2014
- * @version 0.0.7 10.02.2015
+ * @version 0.1.0 17.04.2015
  * @author Oleg Ivanchenko <oleg.ivanchenko@iru.org>
  * @copyright Copyright (C) 2014 - 2015, IRU
  */
-abstract class Sentinel {
+class Sentinel {
 	
 	const FORMAT_JSON = 'json';
 	const FORMAT_TEXT = 'text';
